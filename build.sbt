@@ -1,4 +1,4 @@
-name := "ScalaLensesPrismsOptics"
+name := "ScalaOptics"
 
 version := "0.1"
 

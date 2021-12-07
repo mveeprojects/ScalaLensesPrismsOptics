@@ -1,6 +1,6 @@
-package aa_quicklens_example
+package aa_quicklens
 
-import aa_quicklens_example.ExampleNestedCaseClassInstance.user
+import aa_quicklens.ExampleNestedCaseClassInstance.user
 
 object QuickLenseMain extends App {
 

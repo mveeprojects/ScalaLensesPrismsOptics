@@ -1,4 +1,4 @@
-package aa_quicklens_example
+package aa_quicklens
 
 case class User(id: Int, name: Name, billingInfo: BillingInfo, phone: String, email: String)
 case class Name(firstName: String, lastName: String)
