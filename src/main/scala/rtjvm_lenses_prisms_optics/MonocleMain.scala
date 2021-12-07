@@ -21,11 +21,11 @@ object MonocleMain extends App {
 
   println(s"modified guitar model: ${formattedRockBand.leadGuitarist.favouriteGuitar.model}")
 
-  val composedLenstoReturnNestedGuitarModel = leadGuitaristLens.composeLens(favouriteGuitarLens).composeLens(guitarMakeLens)
+  val composedLensToReturnNestedGuitarMake = leadGuitaristLens.composeLens(favouriteGuitarLens).composeLens(guitarMakeLens)
 
   println(s"original guitar make: ${formattedRockBand.leadGuitarist.favouriteGuitar.make}")
 
-  val anotherFormattedRockBand = composedLenstoReturnNestedGuitarModel.modify(_.toLowerCase)(formattedRockBand)
+  val anotherFormattedRockBand = composedLensToReturnNestedGuitarMake.modify(_.toLowerCase)(formattedRockBand)
 
   println(s"modified guitar make: ${anotherFormattedRockBand.leadGuitarist.favouriteGuitar.make}")
 }
