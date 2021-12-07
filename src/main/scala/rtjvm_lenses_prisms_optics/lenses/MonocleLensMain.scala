@@ -1,7 +1,7 @@
-package rtjvm_lenses_prisms_optics
+package rtjvm_lenses_prisms_optics.lenses
 
 import monocle.macros.GenLens
-import rtjvm_lenses_prisms_optics.ExampleNestedCaseClassInstance.metallica
+import rtjvm_lenses_prisms_optics.lenses.ExampleNestedCaseClassInstance.metallica
 
 object MonocleLensMain extends App {
 

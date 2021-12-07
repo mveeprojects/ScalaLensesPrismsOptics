@@ -1,4 +1,4 @@
-package rtjvm_lenses_prisms_optics
+package rtjvm_lenses_prisms_optics.lenses
 
 case class Guitar(make: String, model: String)
 case class Guitarist(name: String, favouriteGuitar: Guitar)

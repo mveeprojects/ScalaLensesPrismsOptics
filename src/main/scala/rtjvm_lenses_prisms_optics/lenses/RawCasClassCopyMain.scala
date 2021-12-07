@@ -1,6 +1,6 @@
-package rtjvm_lenses_prisms_optics
+package rtjvm_lenses_prisms_optics.lenses
 
-import rtjvm_lenses_prisms_optics.ExampleNestedCaseClassInstance.metallica
+import rtjvm_lenses_prisms_optics.lenses.ExampleNestedCaseClassInstance.metallica
 
 object RawCasClassCopyMain extends App {
 
@@ -11,4 +11,6 @@ object RawCasClassCopyMain extends App {
       )
     )
   )
+
+  println(metallicaGuitarModelNamesWithDashes)
 }
