@@ -3,7 +3,7 @@ package rtjvm_lenses_prisms_optics
 import monocle.macros.GenLens
 import rtjvm_lenses_prisms_optics.ExampleNestedCaseClassInstance.metallica
 
-object MonocleMain extends App {
+object MonocleLensMain extends App {
 
   val leadGuitaristLens   = GenLens[RockBand](_.leadGuitarist)
   val favouriteGuitarLens = GenLens[Guitarist](_.favouriteGuitar)
