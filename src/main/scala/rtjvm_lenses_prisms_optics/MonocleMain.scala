@@ -13,6 +13,9 @@ object MonocleMain extends App {
   val composedLensToReturnNestedGuitarModel =
     leadGuitaristLens.composeLens(favouriteGuitarLens).composeLens(guitarModelLens)
 
+  val composedLensToReturnNestedGuitarMake =
+    leadGuitaristLens.composeLens(favouriteGuitarLens).composeLens(guitarMakeLens)
+
   val guitarModel: String = composedLensToReturnNestedGuitarModel.get(metallica)
 
   println(s"original guitar model: $guitarModel")
@@ -20,8 +23,6 @@ object MonocleMain extends App {
   val formattedRockBand: RockBand = composedLensToReturnNestedGuitarModel.modify(_.replace(" ", "-"))(metallica)
 
   println(s"modified guitar model: ${formattedRockBand.leadGuitarist.favouriteGuitar.model}")
-
-  val composedLensToReturnNestedGuitarMake = leadGuitaristLens.composeLens(favouriteGuitarLens).composeLens(guitarMakeLens)
 
   println(s"original guitar make: ${formattedRockBand.leadGuitarist.favouriteGuitar.make}")
 
