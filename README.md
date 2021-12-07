@@ -1,6 +1,6 @@
 # ScalaOptics
 
-Examples of using Lenses/Prisms to simplify case class mutation, hierarchical type isolation, or both.
+Examples of using Lenses/Prisms to simplify case class mutation, perform hierarchical type isolation, or both.
 
 ### Sources
 
