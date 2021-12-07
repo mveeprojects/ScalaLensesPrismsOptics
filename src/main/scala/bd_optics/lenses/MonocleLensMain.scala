@@ -23,7 +23,7 @@ object MonocleLensMain extends App {
     )
 
     val modifyAll: User => User = Function.chain(operations)
-    val newUser: User = modifyAll(user)
+    val newUser: User           = modifyAll(user)
 
     println(s"-- original user -- $user")
     println(s"-- updated user -- $newUser")
