@@ -11,3 +11,4 @@ Examples of using Lenses, Prisms and Optics to simplify case class mutation, hie
 ### Other Resources
 
 * [SO: Chaining lense operations](https://stackoverflow.com/questions/45714219/combine-collection-of-lenses)
+* [Google Groups: Julien Truffaut confirming negligible performance impact of the above](https://groups.google.com/g/scala-monocle/c/xMzezt2wAog)
