@@ -1,6 +1,6 @@
 # ScalaOptics
 
-Examples of using Lenses/Prisms to simplify case class mutation, hierarchical data, or both.
+Examples of using Lenses/Prisms to simplify case class mutation, manipulate hierarchical structures, or both.
 
 ### Sources
 
