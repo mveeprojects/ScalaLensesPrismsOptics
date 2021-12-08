@@ -51,8 +51,8 @@ println(employee)
 println(updatedEmployee)
 
 // println output:
-// Employee(1,WorkInfo(TDT,Plutus,Scala Developer,ContactInfo(1234,mv@blah.com)),PersonalInfo(Name(Sally,McChickendipper),01/01/1990))
-// Employee(1,WorkInfo(TDT,Plutus,Scala Developer,ContactInfo(1234,mv@blah.com)),PersonalInfo(Name(Sally,McSalad),01/01/1990))
+// Employee(1,WorkInfo(TDT,Plutus,Scala Developer,ContactInfo(1234,mv@blah.com)),PersonalInfo(Name(Sally,McChickendipper),01/01/0001))
+// Employee(1,WorkInfo(TDT,Plutus,Scala Developer,ContactInfo(1234,mv@blah.com)),PersonalInfo(Name(Sally,McSalad),01/01/0001))
 ```
 
 You might agree that this code is pretty clunky and not overly easy to read. It's also only got one purpose, to update
