@@ -1,4 +1,4 @@
-# Scala Optics Tech Talk Notes
+# Scala Optics Notes
 
 Introduce case class vs class, focussing on the copy function in particular.
 
