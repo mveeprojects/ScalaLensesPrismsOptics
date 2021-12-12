@@ -1,8 +1,4 @@
-# Scala Optics Notes
-
-Introduce case class vs class, focussing on the copy function in particular.
-
-- Alvins scalac, javap example demonstrates this well
+# Scala Optics Tech Talk Notes
 
 For this example we are going to user the following case classes detailing the relationship between an `Employee` and
 the information HR has on file for them.
@@ -65,9 +61,9 @@ look into `id`, `workInfo` or `personalInfo`.
 
 In our case we will need to do the following:
 
-1. look into the nested case class `personalInfo`
-2. look into the again nested case class `Name`
-3. look into the the `lastName` value and modify it
+1. look into the nested case class field `personalInfo`
+2. look into the again nested case class field `Name`
+3. look into the `lastName` value of `Name` and modify it
 
 We will then compose our lenses together to create a specific view straight to the `lastName` value when provided an
 instance of `Employee`.
@@ -131,23 +127,20 @@ val modifyAll = Function.chain(operations)
 `andThen` is a bit more readable though, so we'll use that instead.
 
 ```scala
-val modifyAll: Employee => Employee =
-  composedLastNameLense.modify(_ => "McSalad").andThen(composedDobLens.modify(_ => "01/01/1990"))
+def modifyLastNameAndDob(employee: Employee): Employee =
+  composedLastNameLense.modify(_ => "McSalad").andThen(composedDobLens.modify(_ => "01/01/1990"))(employee)
 ```
 
-The final code in its complete form for modifying both fields looks like this
+The final code in its complete form for modifying both fields looks like this.
 
 ```scala
+import monocle.Lens
 import monocle.macros.GenLens
 
 case class Employee(id: Int, workInfo: WorkInfo, personalInfo: PersonalInfo)
-
 case class WorkInfo(department: String, team: String, role: String, contactInfo: ContactInfo)
-
 case class PersonalInfo(name: Name, dob: String)
-
 case class Name(firstName: String, lastName: String)
-
 case class ContactInfo(phone: String, email: String)
 
 object Main extends App {
@@ -168,21 +161,26 @@ object Main extends App {
     PersonalInfo(Name("Sally", "McChickendipper"), "01/01/0001")
   )
 
-  def updateEmployee(employee: Employee): Employee = modifyAll(employee)
+  println(employee)
 
-  println(updateEmployee(employee))
+  val updatedEmployee = modifyLastNameAndDob(employee, "McSalad", "01/01/1990")
+
+  println(updatedEmployee)
+
 }
 
 object LensUtils {
-  private val personalInfoLens = GenLens[Employee](_.personalInfo)
-  private val nameLens = GenLens[PersonalInfo](_.name)
-  private val lastNameLens = GenLens[Name](_.lastName)
-  private val composedLastNameLense = personalInfoLens.composeLens(nameLens).composeLens(lastNameLens)
 
-  private val dobLens = GenLens[PersonalInfo](_.dob)
-  private val composedDobLens = personalInfoLens.composeLens(dobLens)
+  val personalInfoLens: Lens[Employee, PersonalInfo] = GenLens[Employee](_.personalInfo)
+  val nameLens: Lens[PersonalInfo, Name]             = GenLens[PersonalInfo](_.name)
+  val lastNameLens: Lens[Name, String]               = GenLens[Name](_.lastName)
 
-  val modifyAll: Employee => Employee =
-    composedLastNameLense.modify(_ => "McSalad").andThen(composedDobLens.modify(_ => "01/01/1990"))
+  val dobLens: Lens[PersonalInfo, String] = GenLens[PersonalInfo](_.dob)
+
+  val composedLastNameLense = personalInfoLens.composeLens(nameLens).composeLens(lastNameLens)
+  val composedDobLens       = personalInfoLens.composeLens(dobLens)
+
+  def modifyLastNameAndDob(employee: Employee, lastName: String, dob: String): Employee =
+    composedLastNameLense.modify(_ => lastName).andThen(composedDobLens.modify(_ => dob))(employee)
 }
 ```
